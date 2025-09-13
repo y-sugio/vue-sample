@@ -1,0 +1,25 @@
+/* src/style.css */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* 共通フォントを1か所で定義 */
+:root {
+  --app-font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP",
+              "Hiragino Kaku Gothic ProN", "Meiryo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Element Plus にも同じフォントを渡す */
+  --el-font-family: var(--app-font);
+}
+
+/* 基本は body に適用（入力側がこれを拾う） */
+html, body, #app {
+  font-family: var(--app-font);
+}
+
+/* ドロップダウン（.el-popper）は body 直下に生成されるのでここも明示 */
+.el-popper,
+.el-select-dropdown,
+.el-select-dropdown__item {
+  font-family: var(--app-font);
+}
