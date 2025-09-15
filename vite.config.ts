@@ -1,8 +1,10 @@
+// vite.config.ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [
@@ -10,10 +12,17 @@ export default defineConfig({
     AutoImport({
       resolvers: [ElementPlusResolver()],
       dts: 'src/auto-imports.d.ts',
+      imports: ['vue', 'vue-router', 'pinia'],
     }),
     Components({
-      resolvers: [ElementPlusResolver({ importStyle: 'css' })], // 使った分だけ＋CSS自動
+      resolvers: [ElementPlusResolver()],
       dts: 'src/components.d.ts',
     }),
   ],
+  resolve: {
+    alias: {
+      // ★ ESM( "type": "module" ) 環境ではこれ
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })
