@@ -9,12 +9,12 @@ export async function createProject(name: string): Promise<Project> {
 
 // 案件一覧取得
 export async function getProjects(): Promise<Project[]> {
-  const res = await http.get<Project[]>('/api/data/projects.json')
+  const res = await http.get<Project[]>('/projects')
   return res.data
 }
 
 // 案件詳細取得
 export async function getProject(id: string): Promise<Project> {
-  const res = await http.get<Project>(`/api/data/project-${id}.json`)
+  const res = await http.get<Project>(`/projects/${id}`)
   return res.data
 }

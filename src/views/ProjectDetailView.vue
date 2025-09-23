@@ -35,15 +35,13 @@ const project = computed(() => store.getCached(id))
 </script>
 
 <template>
-  <el-card class="box" v-loading="loading">
-    <template #header>
-      <div class="header-row">
-        <span>案件詳細</span>
-        <router-link :to="{ name: 'projects-list' }">
-          <el-button size="small">一覧へ戻る</el-button>
-        </router-link>
-      </div>
-    </template>
+  <div class="page" v-loading="loading">
+    <div class="header-row">
+      <span>案件詳細</span>
+      <router-link :to="{ name: 'projects-list' }">
+        <el-button size="small">一覧へ戻る</el-button>
+      </router-link>
+    </div>
 
     <el-empty v-if="notFound" description="データが見つかりませんでした" />
     <template v-else>
@@ -54,10 +52,10 @@ const project = computed(() => store.getCached(id))
         <el-descriptions-item label="更新日時">{{ new Date(project.updateDate).toLocaleString() }}</el-descriptions-item>
       </el-descriptions>
     </template>
-  </el-card>
+  </div>
 </template>
 
 <style scoped>
-.box { max-width: 720px; margin: 24px auto; }
+.page { padding: 16px 24px; }
 .header-row { display: flex; align-items: center; justify-content: space-between; }
 </style>

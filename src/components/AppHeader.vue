@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-const route = useRoute()
+import { useRouter } from 'vue-router'
 const router = useRouter()
-const isActive = (name: string) => route.name === name
 </script>
 
 <template>
   <header class="header">
-    <div class="brand" @click="router.push({ name: 'projects-list' })">Nursery Management</div>
-    <nav class="nav">
-      <router-link :to="{ name: 'projects-list' }" class="link" :class="{ active: isActive('projects-list') }">
-        案件一覧
-      </router-link>
-      <router-link :to="{ name: 'project-new' }" class="link" :class="{ active: isActive('project-new') }">
-        案件作成
-      </router-link>
-    </nav>
+    <div class="brand" @click="router.push({ name: 'projects-list' })">案件管理</div>
   </header>
 </template>
 

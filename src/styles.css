@@ -23,3 +23,14 @@ html, body, #app {
 .el-select-dropdown__item {
   font-family: var(--app-font);
 }
+
+/* Layout: make main area fluid and remove default padding */
+.el-main {
+  --el-main-padding: 0 !important;
+  padding: 0 !important;
+}
+.el-main > * {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}

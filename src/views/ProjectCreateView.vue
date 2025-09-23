@@ -57,8 +57,8 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <template>
-  <el-card class="box">
-    <template #header>案件作成</template>
+  <div class="page">
+    <h3 class="page-title">案件作成</h3>
 
     <el-form @submit.prevent="onSubmit" label-width="80px">
       <el-form-item label="案件名" :error="errors.name">
@@ -68,6 +68,7 @@ const onSubmit = handleSubmit(async (values) => {
           maxlength="50"
           show-word-limit
           clearable
+          class="name-input"
           @blur="(e:any) => (name = (e?.target?.value ?? '').replace(/\s+/g,' ').trim())"
           @keydown.enter.prevent="onSubmit"
         />
@@ -84,9 +85,11 @@ const onSubmit = handleSubmit(async (values) => {
         </el-button>
       </el-form-item>
     </el-form>
-  </el-card>
+  </div>
 </template>
 
 <style scoped>
-.box { max-width: 640px; margin: 24px auto; }
+.page { padding: 16px 24px; }
+.page-title { margin: 0 0 16px 0; font-size: 16px; font-weight: 600; }
+.name-input { width: 100%; max-width: 52ch; }
 </style>
